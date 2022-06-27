@@ -11,6 +11,39 @@
     <header class="header">
         <h1 class="header-title">Rock Paper Scissors</h1>
     </header>
+    
+    <main class="main">
+        <div class="score-display">
+            <h2 id="scoreInfo" class="score-info">Pick a shape</h2>
+            <h3 id="scoreMessage" class="score-message">First to score 5 points Wins</h3>
+            <div class="score-container">
+                <div class="score-box">
+                    <div class="sign" id="playerSign">X</div>
+                    <div class="score" id="playerScore">Player: 0</div>
+                </div>
+                <div class="score-box">
+                    <div class="sign" id="computerSign">X</div>
+                    <div class="score" id="computerScore">Computer: 0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button">
+            <button class="btn btn-square" id="rockBtn">
+                <div class="sign">R</div>
+            </button>
+            <button class="btn btn-square" id="paperBtn">
+                <div class="sign">P</div>
+            </button>
+            <button class="btn btn-square" id="scissorsBtn">
+                <div class="sign">S</div>
+            </button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-info">	&copy; 2022 yushaushaibu</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

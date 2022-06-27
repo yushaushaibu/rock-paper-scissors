@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Diplomata+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Latin&display=swap');   
 
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -21,9 +22,28 @@
 .header-title {
     display: flex;
     justify-content: center;
-    font-family: 'Diplomata SC', cursive;
+    font-family:'Diplomata SC', cursive;
     text-align: center;
     color: var(--light-color);
     padding: 40px 0;
 }
 
+/* Main */ 
+.main {
+    /* background-color: #37474f; */
+    font-family: 'Anek Latin', sans-serif;
+}
+
+.score-info {
+    text-align: center;
+}
+
+.score-message {
+    text-align: center;
+}
+
+
+/* Footer */
+.footer {
+    font-family: 'Anek Latin', sans-serif;
+}
