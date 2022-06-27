@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Diplomata+SC&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dark-color: #000000;
+    --light-color: #ffffff;
+}
+
+/* Header */
+.header {
+    background-color: var(--dark-color);
+    max-width: 100%;
+    height: 120px;
+}
+
+.header-title {
+    display: flex;
+    justify-content: center;
+    font-family: 'Diplomata SC', cursive;
+    text-align: center;
+    color: var(--light-color);
+    padding: 40px 0;
+}
+
