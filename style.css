@@ -67,6 +67,10 @@
 
 .score-box {
     border: blue solid 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 180px;
     height: 220px;
 }
@@ -90,6 +94,15 @@
     width: 160px;
     height: 160px;
     cursor: pointer;
+}
+
+.fa-x {
+    font-size: 11rem;
+    text-align: center;
+}
+
+.sign {
+    font-size: 7rem;
 }
 
 /* Footer */
