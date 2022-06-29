@@ -5,16 +5,17 @@
 // }
 // console.log(randomItem(items))
 
-
+// UI
 const playerSign = document.getElementById('playerSign');
 const rockBtn = document.getElementById('rockBtn');
 const paperBtn = document.getElementById('paperBtn');
 const scissorsBtn = document.getElementById('scissorsBtn');
 
-
+// Signs
 const rock = '✊';
 const paper = '✋';
 const scissors = '✌';
+let shapes = [rock, paper, scissors];
 
 // Display button sign
 function rockSign() {
@@ -28,6 +29,12 @@ function paperSign() {
 function scissorsSign() {
     return playerSign.innerHTML = scissors;
 }
+
+function computerPlay(shapes){
+    return shapes[Math.floor(Math.random() * shapes.length)];
+}
+console.log(computerPlay(shapes));
+
 
 // Events
 rockBtn.addEventListener('click', rockSign);
