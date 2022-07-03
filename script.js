@@ -7,7 +7,6 @@ const scissorsBtn = document.getElementById('scissorsBtn');
 const button = document.querySelector('.button');
 const scoreInfo = document.getElementById('scoreInfo');
 const scoreMsg = document.getElementById('scoreMessage');
-console.log(scoreMessage);
 
 // variables
 const rock = '✊';
@@ -46,29 +45,29 @@ function gameRules(playerSelection, computerSelection) {
     // updateScoreMsg(roundWinner, playerSelection, computerSelection);
 }
 
-// Computer random Play
-// function computerRandomPlay(){
-//     let randomShapes = Math.floor(Math.random() * shapes.length);
-//     switch(randomShapes) {
-//         case 0:
-//             return rock;
-//         case 1: 
-//             return paper;
-//         case 2: 
-//             return scissors;
-//     }
-// }
-
-function computerRandomPlay() {
+// computer random Play
+function computerRandomPlay(){
     let randomShapes = Math.floor(Math.random() * shapes.length);
-    if(randomShapes === 0) {
-        return rock;
-    } else if (randomShapes === 1) {
-        return paper;
-    } else if (randomShapes === 2) {
-        return scissors;
+    switch(randomShapes) {
+        case 0:
+            return rock;
+        case 1: 
+            return paper;
+        case 2: 
+            return scissors;
     }
 }
+
+// function computerRandomPlay() {
+//     let randomShapes = Math.floor(Math.random() * shapes.length);
+//     if(randomShapes === 0) {
+//         return rock;
+//     } else if (randomShapes === 1) {
+//         return paper;
+//     } else if (randomShapes === 2) {
+//         return scissors;
+//     }
+// }
 
 // update selection
 function updateSelection(playerSelection, computerSelection) {
@@ -95,7 +94,25 @@ function updateSelection(playerSelection, computerSelection) {
     }
 }
 
-// Heading update (score info)
+// function updateSelection(playerSelection, computerSelection) {
+//     if (playerSelection === rock) {
+//         playerSign.innerHTML = rock;
+//     } else if (playerSelection === paper) {
+//         playerSign.innerHTML = paper;
+//     } else if (playerSelection === scissors) {
+//         playerSign.innerHTML = scissors;
+//     }
+
+//     if (computerSelection === rock) {
+//         computerSign.innerHTML = rock;
+//     } else if (computerSelection === paper) {
+//         computerSign.innerHTML = paper
+//     } else if (computerSelection === scissors) {
+//         computerSign.innerHTML = scissors
+//     }
+// }
+
+// heading update (score info)
 function updateScore() {
     if (roundWinner === 'tie') {
         scoreInfo.innerHTML = 'It\'s a tie game';
@@ -122,5 +139,6 @@ function handleClick(playerSelection) {
     updateScore();
 }
 
+// event listeners
 rockBtn.addEventListener('click', () => handleClick(rock));
 
