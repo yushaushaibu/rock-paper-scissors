@@ -20,7 +20,7 @@ let roundWinner = '';
 // rules of the game
 function gameRules(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        roundWinner = 'tie';
+        roundWinner = 'tie'
     }
 
     if (
@@ -30,7 +30,7 @@ function gameRules(playerSelection, computerSelection) {
     ) 
     {
         player++
-        roundWinner = 'player';
+        roundWinner = 'player'
     }
 
     if (
@@ -42,7 +42,7 @@ function gameRules(playerSelection, computerSelection) {
         computer++
         roundWinner = 'computer'
     }
-    // updateScoreMsg(roundWinner, playerSelection, computerSelection);
+    updateScoreMsg(roundWinner, playerSelection, computerSelection);
 }
 
 // computer random Play
@@ -113,7 +113,7 @@ function updateSelection(playerSelection, computerSelection) {
 // }
 
 // heading update (score info)
-function updateScore() {
+function updateScoreInfo() {
     if (roundWinner === 'tie') {
         scoreInfo.innerHTML = 'It\'s a tie game';
     } else if (roundWinner === 'player') {
@@ -124,21 +124,36 @@ function updateScore() {
 }
 
 // update Score Message
-function updateScoreMsg() {
-    if (roundWinner === 'tie') {
-        scoreMessage.innerHTML 
+function updateScoreMsg(winner, playerSelection, computerSelection) {
+    if (winner === 'player') {
+        scoreMsg.innerHTML = `${playerSelection} beats ${computerSelection}`;
+    } else if (winner === 'computer' ) {
+        scoreMsg.innerHTML = `${playerSelection} beaten by ${computerSelection}`;
+    } else {
+        scoreMsg.innerHTML = `${playerSelection} ties with ${computerSelection}`;
     }
-
 }
+
+// capitalize first letter
+function capitalizeFirstLetter(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 
 // buttons events
 function handleClick(playerSelection) {
     const computerSelection = computerRandomPlay();
     gameRules(playerSelection, computerSelection);
     updateSelection(playerSelection, computerSelection);
-    updateScore();
+    updateScoreInfo();
 }
 
 // event listeners
 rockBtn.addEventListener('click', () => handleClick(rock));
+paperBtn.addEventListener('click', () => handleClick(paper));
 
+
+
+// rockBtn.addEventListener('click', function() {
+//     return handleClick(rock);
+// })
