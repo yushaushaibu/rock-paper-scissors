@@ -7,14 +7,16 @@ const scissorsBtn = document.getElementById('scissorsBtn');
 const button = document.querySelector('.button');
 const scoreInfo = document.getElementById('scoreInfo');
 const scoreMsg = document.getElementById('scoreMessage');
+let playerScoreCounter = document.getElementById('playerScore');
+let computerScoreCounter = document.getElementById('computerScore');
 
 // variables
 const rock = '✊';
 const paper = '✋';
 const scissors = '✌';
 let shapes = [rock, paper, scissors];
-let player = 0;
-let computer = 0;
+let playerScore = 0;
+let computerScore = 0;
 let roundWinner = '';
 
 // rules of the game
@@ -29,7 +31,7 @@ function gameRules(playerSelection, computerSelection) {
         (playerSelection === scissors && computerSelection === paper)
     ) 
     {
-        player++
+        playerScore++
         roundWinner = 'player'
     }
 
@@ -39,7 +41,7 @@ function gameRules(playerSelection, computerSelection) {
         (computerSelection ===  scissors && playerSelection === paper)
     ) 
     {
-        computer++
+        computerScore++
         roundWinner = 'computer'
     }
     updateScoreMsg(roundWinner, playerSelection, computerSelection);
@@ -134,10 +136,11 @@ function updateScoreMsg(winner, playerSelection, computerSelection) {
     }
 }
 
+
 // capitalize first letter
-function capitalizeFirstLetter(str){
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
+// function capitalizeFirstLetter(str){
+//     return str.charAt(0).toUpperCase() + str.slice(1);
+// }
 
 
 // buttons events
@@ -146,11 +149,15 @@ function handleClick(playerSelection) {
     gameRules(playerSelection, computerSelection);
     updateSelection(playerSelection, computerSelection);
     updateScoreInfo();
+
+    playerScoreCounter.innerHTML = `player: ${playerScore}`;
+    computerScoreCounter.innerHTML = `computer: ${computerScore}`;
 }
 
 // event listeners
 rockBtn.addEventListener('click', () => handleClick(rock));
 paperBtn.addEventListener('click', () => handleClick(paper));
+scissorsBtn.addEventListener('click', () => handleClick(scissors));
 
 
 
