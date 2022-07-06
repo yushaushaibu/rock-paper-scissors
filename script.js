@@ -14,7 +14,7 @@ let endGameMsg = document.getElementById('endGameMsg');
 let playerScoreCounter = document.getElementById('playerScore');
 let computerScoreCounter = document.getElementById('computerScore');
 
-// variables
+// Variables
 const rock = '✊';
 const paper = '✋';
 const scissors = '✌';
@@ -23,7 +23,7 @@ let playerScore = 0;
 let computerScore = 0;
 let roundWinner = '';
 
-// rules of the game
+// Rules of The Game
 function gameRules(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         roundWinner = 'tie'
@@ -51,7 +51,7 @@ function gameRules(playerSelection, computerSelection) {
     updateScoreMsg(roundWinner, playerSelection, computerSelection);
 }
 
-// computer random Play
+// Computer Random Play
 function computerRandomPlay(){
     let randomShapes = Math.floor(Math.random() * shapes.length);
     switch(randomShapes) {
@@ -79,7 +79,7 @@ function isGameOver() {
     return playerScore === 5 || computerScore === 5;
 }
 
-// update selection
+// Update Selection
 function updateSelection(playerSelection, computerSelection) {
     switch(playerSelection) {
         case rock:
@@ -121,7 +121,7 @@ function updateSelection(playerSelection, computerSelection) {
 //     }
 // }
 
-// Heading update (score info)
+// Heading Update (score info)
 function updateScoreInfo() {
     if (roundWinner === 'tie') {
         scoreInfo.innerHTML = 'It\'s a tie game';
@@ -156,7 +156,7 @@ function closeEndGameModal() {
     overlay.classList.remove('active');
 }
 
-// Message on modal
+// Message on Modal
 function setFinalMsg() {
     if (playerScore > computerScore) {
         endGameMsg.innerHTML = 'You won!'
