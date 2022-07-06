@@ -8,11 +8,11 @@ const button = document.querySelector('.button');
 const scoreInfo = document.getElementById('scoreInfo');
 const scoreMsg = document.getElementById('scoreMessage');
 const overlay = document.getElementById('overlay');
-let playerScoreCounter = document.getElementById('playerScore');
-let computerScoreCounter = document.getElementById('computerScore');
+const restartBtn = document.getElementById('restartBtn');
 let endGameModal = document.getElementById('endGameModal');
 let endGameMsg = document.getElementById('endGameMsg');
-
+let playerScoreCounter = document.getElementById('playerScore');
+let computerScoreCounter = document.getElementById('computerScore');
 
 // variables
 const rock = '✊';
@@ -63,12 +63,6 @@ function computerRandomPlay(){
             return scissors;
     }
 }
-
-// is game over
-function isGameOver() {
-     return playerScore === 5 || computerScore === 5;
-}
-
 // function computerRandomPlay() {
 //     let randomShapes = Math.floor(Math.random() * shapes.length);
 //     if(randomShapes === 0) {
@@ -79,6 +73,11 @@ function isGameOver() {
 //         return scissors;
 //     }
 // }
+
+// is game over
+function isGameOver() {
+    return playerScore === 5 || computerScore === 5;
+}
 
 // update selection
 function updateSelection(playerSelection, computerSelection) {
@@ -104,7 +103,6 @@ function updateSelection(playerSelection, computerSelection) {
             computerSign.innerHTML = scissors;
     }
 }
-
 // function updateSelection(playerSelection, computerSelection) {
 //     if (playerSelection === rock) {
 //         playerSign.innerHTML = rock;
@@ -123,7 +121,7 @@ function updateSelection(playerSelection, computerSelection) {
 //     }
 // }
 
-// heading update (score info)
+// Heading update (score info)
 function updateScoreInfo() {
     if (roundWinner === 'tie') {
         scoreInfo.innerHTML = 'It\'s a tie game';
@@ -134,7 +132,7 @@ function updateScoreInfo() {
     }
 }
 
-// update Score Message
+// Update Score Message
 function updateScoreMsg(winner, playerSelection, computerSelection) {
     if (winner === 'player') {
         scoreMsg.innerHTML = `${playerSelection} beats ${computerSelection}`;
@@ -145,12 +143,14 @@ function updateScoreMsg(winner, playerSelection, computerSelection) {
     }
 }
 
+// Open Modal
 function endGameModalPopUp() {
     endGameModal.classList.add('active');
     overlay.classList.add('active');
 }
 
 
+// Close Modal
 function closeEndGameModal() {
     endGameModal.classList.remove('active');
     overlay.classList.remove('active');
@@ -164,7 +164,6 @@ function setFinalMsg() {
         endGameMsg.innerHTML = 'You lost!'
     }
 }
-
 // function setFinalMsg() {
 //     return playerScore > computerScore
 //     ? (endgameMsg.innerHTML = 'You won!')
@@ -172,7 +171,21 @@ function setFinalMsg() {
 // }
 
 
-// buttons events
+// Play again
+function restartGame() {
+    closeEndGameModal();
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreCounter.innerHTML = `player: ${playerScore}`;
+    computerScoreCounter.innerHTML = `computer: ${computerScore}`;
+    scoreInfo.innerHTML = 'Pick a shape';
+    scoreMsg.innerHTML = 'First to score 5 points wins'
+    playerSign.innerHTML = 'X';
+    computerSign.innerHTML = 'X';
+}
+
+
+// BUTTONS EVENT 
 function handleClick(playerSelection) {
     if (isGameOver()) {
         endGameModalPopUp()
@@ -189,10 +202,11 @@ function handleClick(playerSelection) {
     computerScoreCounter.innerHTML = `computer: ${computerScore}`;
 }
 
-// event listeners
+// Event listeners
 rockBtn.addEventListener('click', () => handleClick(rock));
 paperBtn.addEventListener('click', () => handleClick(paper));
 scissorsBtn.addEventListener('click', () => handleClick(scissors));
+restartBtn.addEventListener('click', restartGame);
 // rockBtn.addEventListener('click', function() {
 //     return handleClick(rock);
 // })
