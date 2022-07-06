@@ -148,7 +148,6 @@ function updateScoreMsg(winner, playerSelection, computerSelection) {
 function endGameModalPopUp() {
     endGameModal.classList.add('active');
     overlay.classList.add('active');
-    console.log('modal popup..')
 }
 
 
@@ -157,24 +156,27 @@ function closeEndGameModal() {
     overlay.classList.remove('active');
 }
 
+// Message on modal
 function setFinalMsg() {
-    return playerScore > computerScore
-    ? (endgameMsg.innerHTML = 'You won!')
-    : (endGameMsg.innerHTML = 'You lost..')
+    if (playerScore > computerScore) {
+        endGameMsg.innerHTML = 'You won!'
+    } else {
+        endGameMsg.innerHTML = 'You lost!'
+    }
 }
 
 // function setFinalMsg() {
-//     if (playerScore > computerScore) {
-//         endGameMsg.innerHTML = 'You won!'
-//     } else {
-//         endGameMsg.innerHTML = 'You lose..'
-//     }
+//     return playerScore > computerScore
+//     ? (endgameMsg.innerHTML = 'You won!')
+//     : (endGameMsg.innerHTML = 'You lost..')
 // }
+
 
 // buttons events
 function handleClick(playerSelection) {
     if (isGameOver()) {
         endGameModalPopUp()
+        setFinalMsg()
         return;
     } 
 

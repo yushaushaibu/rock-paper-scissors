@@ -129,6 +129,7 @@ body {
     font-size: 7rem;
 }
 
+
 /* Footer */
 .footer {
     font-family: 'Anek Latin', sans-serif;
@@ -143,6 +144,7 @@ body {
 
 /* Modal */
 .modal {
+    font-family: 'Anek Latin', sans-serif;
     position: fixed;
     z-index: 1;
     top: 50%;
@@ -165,6 +167,19 @@ body {
   .modal-title {
     font-size: 40px;
     font-weight: bold;
+  }
+
+  .modal .btn {
+    background-color: var(--secondary-dark);
+    color: var(--primary-light);
+    font-size: 1.7rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .modal .btn:hover {
+    background-color: var(--grey-color);
   }
   
   .btn-restart {
