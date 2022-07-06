@@ -7,8 +7,12 @@ const scissorsBtn = document.getElementById('scissorsBtn');
 const button = document.querySelector('.button');
 const scoreInfo = document.getElementById('scoreInfo');
 const scoreMsg = document.getElementById('scoreMessage');
+const overlay = document.getElementById('overlay');
 let playerScoreCounter = document.getElementById('playerScore');
 let computerScoreCounter = document.getElementById('computerScore');
+let endGameModal = document.getElementById('endGameModal');
+let endGameMsg = document.getElementById('endGameMsg');
+
 
 // variables
 const rock = '✊';
@@ -58,6 +62,11 @@ function computerRandomPlay(){
         case 2: 
             return scissors;
     }
+}
+
+// is game over
+function isGameOver() {
+     return playerScore === 5 || computerScore === 5;
 }
 
 // function computerRandomPlay() {
@@ -136,15 +145,39 @@ function updateScoreMsg(winner, playerSelection, computerSelection) {
     }
 }
 
+function endGameModalPopUp() {
+    endGameModal.classList.add('active');
+    overlay.classList.add('active');
+    console.log('modal popup..')
+}
 
-// capitalize first letter
-// function capitalizeFirstLetter(str){
-//     return str.charAt(0).toUpperCase() + str.slice(1);
+
+function closeEndGameModal() {
+    endGameModal.classList.remove('active');
+    overlay.classList.remove('active');
+}
+
+function setFinalMsg() {
+    return playerScore > computerScore
+    ? (endgameMsg.innerHTML = 'You won!')
+    : (endGameMsg.innerHTML = 'You lost..')
+}
+
+// function setFinalMsg() {
+//     if (playerScore > computerScore) {
+//         endGameMsg.innerHTML = 'You won!'
+//     } else {
+//         endGameMsg.innerHTML = 'You lose..'
+//     }
 // }
-
 
 // buttons events
 function handleClick(playerSelection) {
+    if (isGameOver()) {
+        endGameModalPopUp()
+        return;
+    } 
+
     const computerSelection = computerRandomPlay();
     gameRules(playerSelection, computerSelection);
     updateSelection(playerSelection, computerSelection);
@@ -158,9 +191,6 @@ function handleClick(playerSelection) {
 rockBtn.addEventListener('click', () => handleClick(rock));
 paperBtn.addEventListener('click', () => handleClick(paper));
 scissorsBtn.addEventListener('click', () => handleClick(scissors));
-
-
-
 // rockBtn.addEventListener('click', function() {
 //     return handleClick(rock);
 // })
