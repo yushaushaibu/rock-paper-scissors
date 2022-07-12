@@ -74,7 +74,7 @@ function computerRandomPlay(){
 //     }
 // }
 
-// is game over
+// is Game Over
 function isGameOver() {
     return playerScore === 5 || computerScore === 5;
 }
@@ -148,7 +148,6 @@ function endGameModalPopUp() {
     endGameModal.classList.add('active');
     overlay.classList.add('active');
 }
-
 
 // Close Modal
 function closeEndGameModal() {
