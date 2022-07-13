@@ -23,7 +23,8 @@ let playerScore = 0;
 let computerScore = 0;
 let roundWinner = '';
 
-// Rules of The Game
+/** The rule of the game function. It compares the shapes and 
+determines the winner or it's tied */
 function gameRules(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         roundWinner = 'tie'
@@ -51,7 +52,10 @@ function gameRules(playerSelection, computerSelection) {
     updateScoreMsg(roundWinner, playerSelection, computerSelection);
 }
 
-// Computer Random Play
+/** This function shuffles or randomise the shapes in the array. 
+then, the switch statement returns a specific shape that is 
+choosen at random as the computerSelection.
+*/
 function computerRandomPlay(){
     let randomShapes = Math.floor(Math.random() * shapes.length);
     switch(randomShapes) {
@@ -74,12 +78,15 @@ function computerRandomPlay(){
 //     }
 // }
 
-// is Game Over
+/** This function ensures that the game is over if the playerScore or
+the computerScore is === 5 */
 function isGameOver() {
     return playerScore === 5 || computerScore === 5;
 }
 
-// Update Selection
+/** This function displays a shape onto the screen when a button 
+ representing the shape is clicked and also displays the shape which
+ is randomly selected by the computer. */
 function updateSelection(playerSelection, computerSelection) {
     switch(playerSelection) {
         case rock:
@@ -121,7 +128,8 @@ function updateSelection(playerSelection, computerSelection) {
 //     }
 // }
 
-// Heading Update (score info)
+/** This function updates the heading (scoreInfo ~ "Pick a shape") if a player wins or 
+lose or when the game is tied. */
 function updateScoreInfo() {
     if (roundWinner === 'tie') {
         scoreInfo.innerHTML = 'It\'s a tie game';
@@ -132,7 +140,8 @@ function updateScoreInfo() {
     }
 }
 
-// Update Score Message
+/** This function shows the winner of a round in the game. 
+(scoreMessage ~ "First to score 5 points Wins") */
 function updateScoreMsg(winner, playerSelection, computerSelection) {
     if (winner === 'player') {
         scoreMsg.innerHTML = `${playerSelection} beats ${computerSelection}`;
@@ -155,7 +164,8 @@ function closeEndGameModal() {
     overlay.classList.remove('active');
 }
 
-// Message on Modal
+/** Message on the pop up modal showing if a player 
+won or lost the game */
 function setFinalMsg() {
     if (playerScore > computerScore) {
         endGameMsg.innerHTML = 'You won!'
@@ -170,7 +180,8 @@ function setFinalMsg() {
 // }
 
 
-// Play again
+/** Resets scores, displayed messages and shapes to begin
+a new game */
 function restartGame() {
     closeEndGameModal();
     playerScore = 0;
@@ -184,7 +195,8 @@ function restartGame() {
 }
 
 
-// BUTTONS EVENT 
+/** BUTTONS EVENT ~ This function invoke several functions when a 
+button on the screen is clicked */
 function handleClick(playerSelection) {
     if (isGameOver()) {
         endGameModalPopUp()
@@ -201,7 +213,8 @@ function handleClick(playerSelection) {
     computerScoreCounter.innerHTML = `computer: ${computerScore}`;
 }
 
-// Event listeners
+/** Event listeners ~ They triggers the handleClick function when
+when a (rock or paper or scissors) is clicked button. */
 rockBtn.addEventListener('click', () => handleClick(rock));
 paperBtn.addEventListener('click', () => handleClick(paper));
 scissorsBtn.addEventListener('click', () => handleClick(scissors));
